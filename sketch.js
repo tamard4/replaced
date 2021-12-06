@@ -13,9 +13,11 @@ function preload() {
 function setup() {
   cnv = createCanvas(794 * 1.5, 560 * 1.5);
   // pixelDensity(3);
-  button = createButton("play");
-  button.addClass('RAMOI');
+  button = createButton("play song");
+  button.addClass('play-btn');
   buttonSave = createButton("Save");
+  buttonSave.addClass('save-btn');
+
   button.mousePressed(togglePlaying);
   background(0);
 
