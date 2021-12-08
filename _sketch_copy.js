@@ -1,16 +1,19 @@
 let song;
-let amp;
-
-let circles = [];
-let circlesSettings = [];
-
-let circlesFilled = [];
-let circlesFilledSettings = [];
-
-let cnv;
-
 let button;
 let buttonSave;
+let amp;
+let circles = [];
+let circlesFilled = [];
+let cnv;
+
+
+
+var randomnumber1;
+var randomnumber2;
+var randomnumber3;
+var randomnumber4;
+var randomnumber5;
+
 
 function preload() {
   song = loadSound('music.mp3');
@@ -49,27 +52,35 @@ function setup() {
   straightLine = new StraightLinedraw();
   amp = new p5.Amplitude();
 
-  // Create circles array:
-  for (let i = 0; i < random(1, 5); i++) {
-    circles[i] = new Circledraw();
 
-    circlesSettings[i] = {
-      x: random(width),
-      y: random(height),
-    }
+  // Create circles array:
+  for (let i = 0; i < random(5); i++) {
+    circles[i] = new Circledraw();
   }
 
   // Create circles (filled) array:
-  for (let i = 0; i < random(1, 5); i++) {
+  for (let i = 0; i < random(5); i++) {
     circlesFilled[i] = new CircleFilldraw();
-
-    circlesFilledSettings[i] = {
-      x: random(width),
-      y: random(height),
-    }
   }
 
 }
+
+
+// async function loadAudio(ev) {
+// var reader = new FileReader();
+// reader.onload = function(ev) {
+
+//   };
+// reader.readAsDataURL(this.files[0]);
+
+// console.log('ev', ev)
+
+// let audio = new Audio(ev.target[0])
+// // song = await loadSound(ev.target[0]);
+// console.log('INPUT FILE', ev.files[0])
+// song = await loadSound(audio);
+// song.play();
+// }
 
 function togglePlaying() {
   if (!song.isPlaying()) {
@@ -85,6 +96,13 @@ function togglePlaying() {
     button.addClass('play-btn');
     button.removeClass('pause-btn');
   }
+
+  randomnumber1 = random(50, 100);
+  randomnumber2 = random(200);
+  randomnumber3 = random(300);
+  randomnumber4 = random(400);
+  randomnumber5 = random(500);
+
 }
 
 function draw() {
@@ -110,14 +128,14 @@ function draw() {
 
     // console.log('vol', vol);
 
-    let x = 1 + random(0, width);
-    let y = 1 + random(0, height);
+    let x = 1+random(0, width);
+    let y = 1+random(0, height);
 
 
 
     // let x = randomnumber1 + randomnumber2 * i;
     // let y = randomnumber3 + randomnumber1 * i;
-    circles[i].move(circlesSettings[i].x, circlesSettings[i].y);
+    circles[i].move(x, y);
     circles[i].show();
   }
 
@@ -131,7 +149,7 @@ function draw() {
   for (let i = 0; i < circlesFilled.length; i++) {
     let x = 1 + i * 100;
     let y = 200 + i * 200;
-    circlesFilled[i].move(circlesFilledSettings[i].x, circlesFilledSettings[i].y, 1);
+    circlesFilled[i].move(x, y, 1);
   }
 
   if (vol >= 0.55) {
@@ -154,17 +172,6 @@ function draw() {
     }
   }
 
-  let isAddMore = random(1, 1000)
-
-  if (isAddMore > 999) {
-    circles.push(new Circledraw())
-    circlesSettings.push(
-      {
-        x: random(width),
-        y: random(height)
-      }
-    )
-  }
 
   buttonSave.mousePressed(imageSave);
 }
