@@ -2,46 +2,86 @@ let song;
 let amp;
 
 let circles = [];
-let circlesSettings = [];
-
 let circlesFilled = [];
-let circlesFilledSettings = [];
 
 let cnv;
 
 let button;
 let buttonSave;
+let buttonChange;
 
-function preload() {
-  song = loadSound('music.mp3');
+let isModalOpen = false
+let selectedSong = 1
+let isMediaButtons = false
+
+async function changeSong(num) {
+  selectedSong = num
+  // song = await loadSound('sound/' + selectedSong + '.mp3');
+  await setup()
+  toggleModal()
 }
 
 
-function onTry() {
+
+function toggleModal() {
+  isModalOpen = !isModalOpen
+  document.querySelector('.screen-modal').classList.toggle('open-modal')
+}
+
+
+
+function onBegin() {
   let elMediaBtn = document.querySelector('.save-btn');
   elMediaBtn.scrollIntoView({
     behavior: 'smooth',
     block: 'end',
     inline: 'nearest'
   })
+  // toggleModal()
 }
 
-function setup() {
+function onPick() {
+  let elPick = document.querySelector('.upload-btn');
+  elPick.scrollIntoView({
+    behavior: 'smooth',
+    block: 'end',
+    inline: 'nearest'
+  })
+  // toggleModal()
+}
+
+
+
+async function setup() {
+  song = await loadSound('sound/' + selectedSong + '.mp3');
 
   // todo: make canvas fit user screen
-  cnv = createCanvas(794 * 1.5, 560 * 1.5);
+    cnv = createCanvas(windowWidth, windowHeight-100);
+
+  // cnv = createCanvas(794 * 1.5, 560 * 1.5);
   pixelDensity(3);
 
   // Create buttons:
-  button = createButton('play song');
-  button.addClass('media-btn');
-  button.addClass('play-btn');
 
-  buttonSave = createButton('Save');
-  buttonSave.addClass('media-btn');
-  buttonSave.addClass('save-btn');
+  if (!isMediaButtons) {
+    button = createButton('play song');
+    button.addClass('media-btn');
+    button.addClass('play-btn');
 
-  button.mousePressed(togglePlaying);
+    buttonSave = createButton('Save');
+    buttonSave.addClass('media-btn');
+    buttonSave.addClass('save-btn');
+    button.mousePressed(togglePlaying);
+
+    // toggle this to show change button + modal
+    // buttonChange = createButton('Change song');
+    // buttonChange.addClass('media-btn');
+    // buttonChange.addClass('change-btn');
+    // buttonChange.mousePressed(toggleModal);
+  }
+
+  isMediaButtons = true
+
   background(0);
 
 
@@ -51,9 +91,8 @@ function setup() {
 
   // Create circles array:
   for (let i = 0; i < random(1, 5); i++) {
-    circles[i] = new Circledraw();
-
-    circlesSettings[i] = {
+    circles[i] = {
+      circle: new Circledraw(),
       x: random(width),
       y: random(height),
     }
@@ -61,9 +100,9 @@ function setup() {
 
   // Create circles (filled) array:
   for (let i = 0; i < random(1, 5); i++) {
-    circlesFilled[i] = new CircleFilldraw();
 
-    circlesFilledSettings[i] = {
+    circlesFilled[i] = {
+      circle: new CircleFilldraw(),
       x: random(width),
       y: random(height),
     }
@@ -99,39 +138,20 @@ function draw() {
   straightLine.show();
   straightLine.move();
 
-  // function getRandomCirclePosition(min, max, idx) {
-  //   ret
-  // }
-
 
   // CIRCLES:
   for (let i = 0; i < circles.length; i++) {
+    // let x = 1 + random(0, width);
+    // let y = 1 + random(0, height);
 
-
-    // console.log('vol', vol);
-
-    let x = 1 + random(0, width);
-    let y = 1 + random(0, height);
-
-
-
-    // let x = randomnumber1 + randomnumber2 * i;
-    // let y = randomnumber3 + randomnumber1 * i;
-    circles[i].move(circlesSettings[i].x, circlesSettings[i].y);
-    circles[i].show();
+    circles[i].circle.move(circles[i].x, circles[i].y);
+    circles[i].circle.show();
   }
 
-  //for (let i = 0; i < circles.length; i++) {
-  // let x = random(200) + random(200) * i;
-  // let y = random(200) + 40 * i;
-  //circles[i].move(x, y);
-  // circles[i].show();
-  //}
-
   for (let i = 0; i < circlesFilled.length; i++) {
-    let x = 1 + i * 100;
-    let y = 200 + i * 200;
-    circlesFilled[i].move(circlesFilledSettings[i].x, circlesFilledSettings[i].y, 1);
+    // let x = 1 + i * 100;
+    // let y = 200 + i * 200;
+    circlesFilled[i].circle.move(circlesFilled[i].x, circlesFilled[i].y, 1);
   }
 
   if (vol >= 0.55) {
@@ -140,8 +160,9 @@ function draw() {
       for (let i = 0; i < circles.length; i++) {
         let x = random(100, width) + random(200) * i;
         let y = random(height) + random(100, height) * i;
-        circles[i].move(x, y);
-        circles[i].show();
+
+        circles[i].circle.move(x, y);
+        circles[i].circle.show();
       }
     }
     else {
@@ -157,15 +178,14 @@ function draw() {
   let isAddMore = random(1, 1000)
 
   if (isAddMore > 999) {
-    circles.push(new Circledraw())
-    circlesSettings.push(
+    circles.push(
       {
+        circle: new Circledraw(),
         x: random(width),
         y: random(height)
       }
     )
   }
-
   buttonSave.mousePressed(imageSave);
 }
 
