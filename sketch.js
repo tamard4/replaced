@@ -8,6 +8,7 @@ let cnv;
 
 let button;
 let buttonSave;
+let buttonRestart;
 let buttonChange;
 
 let isModalOpen = false
@@ -56,7 +57,7 @@ async function setup() {
   song = await loadSound('sound/' + selectedSong + '.mp3');
 
   // todo: make canvas fit user screen
-    cnv = createCanvas(windowWidth, windowHeight-100);
+  cnv = createCanvas(windowWidth, windowHeight - 100);
 
   // cnv = createCanvas(794 * 1.5, 560 * 1.5);
   pixelDensity(3);
@@ -72,6 +73,11 @@ async function setup() {
     buttonSave.addClass('media-btn');
     buttonSave.addClass('save-btn');
     button.mousePressed(togglePlaying);
+
+    buttonRestart = createButton('restart');
+    buttonRestart.addClass('media-btn');
+    buttonRestart.addClass('restart-btn');
+    buttonRestart.mousePressed(restartSong);
 
     // toggle this to show change button + modal
     // buttonChange = createButton('Change song');
@@ -110,19 +116,34 @@ async function setup() {
 
 }
 
+function init() {
+  const elHero = document.querySelector('.hero')
+
+  elHero.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+    inline: 'nearest'
+  })
+}
+
+function restartSong() {
+  location.reload();
+}
+
 function togglePlaying() {
   if (!song.isPlaying()) {
     song.play();
-    // song.setVolume(0.5);
     button.html('Pause');
     button.addClass('pause-btn');
     button.removeClass('play-btn');
+    buttonRestart.addClass('show')
   }
   else {
     song.pause();
     button.html('Resume');
     button.addClass('play-btn');
     button.removeClass('pause-btn');
+    buttonRestart.addClass('show')
   }
 }
 
