@@ -1,6 +1,5 @@
 @font-face {
-  font-family: ArbelG-Regular;
-  src: url(../font/ArbelG-Regular.otf)
+  font-family: 'Source Code Pro', monospace;
 }
 
 * {
