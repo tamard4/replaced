@@ -33,7 +33,7 @@ a:hover {
     cursor: pointer;
     width: 200px;
     height: 60px;
-    font-family: ArbelG-Regular;
+    font-family: 'Source Code Pro', monospace;
     color: rgb(255, 255, 255);
     font-size: 18px;
     padding: 10px 20px;
@@ -56,7 +56,7 @@ a:hover {
     cursor: pointer;
     width: 200px;
     height: 60px;
-    font-family: ArbelG-Regular;
+    font-family: 'Source Code Pro', monospace;
     color: rgb(255, 255, 255);
     font-size: 18px;
     padding: 10px 20px;
@@ -79,7 +79,7 @@ a:hover {
     content: 'Choose file';
     border: solid 4px rgb(255, 255, 255);
     cursor: pointer;
-    font-family: ArbelG-Regular;
+    font-family: 'Source Code Pro', monospace;
     color: rgb(255, 255, 255);
     font-size: 18px;
     padding: 17px 48px;
@@ -104,7 +104,7 @@ a:hover {
     cursor: pointer;
     width: 200px;
     height: 59px;
-    font-family: ArbelG-Regular;
+    font-family: 'Source Code Pro', monospace;
     color: rgb(255, 255, 255);
     font-size: 18px;
     padding: 10px 20px;
@@ -141,7 +141,7 @@ main {
     width: 170px;
     height: 60px;
 
-    font-family: ArbelG-Regular;
+    font-family: 'Source Code Pro', monospace;
     color: rgb(255, 255, 255);
 
     font-size: 16px;
