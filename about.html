@@ -35,7 +35,8 @@
         human being in the creative process and why is it so difficult and almost impossible to relinquish us of it.
         However, replaced generator might surprise you with its capabilities. By teaching the program’s algorithm
         replaced
-        generator can mimic the human behavior when drawing while listening to music. This process is called graphic
+        generator can mimic the <span class="name-walter" onmouseover="onHumanHover()"
+        onmouseout="onHumanOut()">human behavior</span> when drawing while listening to music. This process is called graphic
         notation to be more professional. To create graphic scores all you need to do is draw the notes and sounds you
         hear as you feel them.
       </p>
@@ -48,13 +49,21 @@
           — and embodying those predeterminations in machines.</p>
       </div>
 
+      <div class="modal human-modal">
+        <img src="img/modal-2.png" />
+        <h2>Human Behavior</h2>
+        <p class="test">Behavior is also driven, in part, by thoughts and feelings, which provide insight into individual psyche, revealing such things as attitudes and values. Human behavior is shaped by psychological traits, as personality types vary from person to person, producing different actions and behavior.</p>
+      </div>
+
 
 
     </section>
 
     <section class="section-2">
       <h1>Current Edition</h1>
-      <img src="img/score.jpg" />
+      <img src="img/mockup.png"/>
+      <button class="btn-purchase" type="button">Purchace</button>
+
     </section>
 
     <section class="section-3">
@@ -65,8 +74,8 @@
 
       <div class="collection">
 
-        <a class="item item-1" href="http://www.walla.co.il" target="blank">
-          <img src="img/walter.png" />
+        <a class="item item-1" href="https://moogiewonderland.co.uk/scores-of-people-what-is-a-graphic-score/" target="blank">
+          <img src="img/item-1.png" />
           <div class="item-info">
             <h3>Scores of people: what is a graphic score?</h3>
             <p>Before explaining what a graphic score is, let's step back a little and talk about musical scores in
@@ -74,48 +83,43 @@
           </div>
         </a>
 
-        <a class="item item-2" href="http://www.walla.co.il" target="blank">
-          <img src="img/walter.png" />
+        <a class="item item-2" href="https://www.americanscientist.org/article/ai-is-blurring-the-definition-of-artist" target="blank">
+          <img src="img/item-2.png" />
           <div class="item-info">
-            <h3>Scores of people: what is a graphic score?</h3>
-            <p>Before explaining what a graphic score is, let's step back a little and talk about musical scores in
-              general.</p>
+            <h3>AI Is Blurring the Definition of Artist</h3>
+            <p>With artificial intelligence (AI) becoming incorporated into more aspects of our daily lives, from writing to driving, it’s only natural that artists would also start to experiment with it.</p>
           </div>
         </a>
 
-        <a class="item item-3" href="http://www.walla.co.il" target="blank">
-          <img src="img/walter.png" />
+        <a class="item item-3" href="https://www.schoolofnoise.com/global-graphic-score-project/compose-a-graphic-score/" target="blank">
+          <img src="img/item-3.png" />
           <div class="item-info">
-            <h3>Scores of people: what is a graphic score?</h3>
-            <p>Before explaining what a graphic score is, let's step back a little and talk about musical scores in
-              general.</p>
+            <h3>Compose a graphic score</h3>
+            <p>Graphic scores can very artistic and imaginative. They allow you to explore different ideas about art, objects, emotions and environments.</p>
           </div>
         </a>
 
-        <a class="item item-4" href="http://www.walla.co.il" target="blank">
-          <img src="img/walter.png" />
+        <a class="item item-4" href="https://wayback.archive-it.org/11788/20200107160836/http://exhibitions.nypl.org/johncage/" target="blank">
+          <img src="img/item-4.png" />
           <div class="item-info">
-            <h3>Scores of people: what is a graphic score?</h3>
-            <p>Before explaining what a graphic score is, let's step back a little and talk about musical scores in
-              general.</p>
+            <h3> New York Public Library: John Cage</h3>
+            <p>An archived page containing rare footage and scores of the unbelieveable John Cage.</p>
           </div>
         </a>
 
-        <a class="item item-5" href="http://www.walla.co.il" target="blank">
-          <img src="img/walter.png" />
+        <a class="item item-5" href="https://teropa.info/loop/#/markovplayer" target="blank">
+          <img src="img/item-5.png" />
           <div class="item-info">
-            <h3>Scores of people: what is a graphic score?</h3>
-            <p>Before explaining what a graphic score is, let's step back a little and talk about musical scores in
-              general.</p>
+            <h3>How Generative Music Works</h3>
+            <p>A Perspective.</p>
           </div>
         </a>
 
-        <a class="item item-6" href="http://www.walla.co.il" target="blank">
-          <img src="img/walter.png" />
+        <a class="item item-6" href="https://thisartworkdoesnotexist.com/" target="blank">
+          <img src="img/item-6.png" />
           <div class="item-info">
-            <h3>Scores of people: what is a graphic score?</h3>
-            <p>Before explaining what a graphic score is, let's step back a little and talk about musical scores in
-              general.</p>
+            <h3>This Artwork Does Not Exist</h3>
+            <p>Works of art that have not been painted from a human being. Using generative adversarial networks (GAN), we can learn how to create realistic-looking fake versions of almost anything.</p>
           </div>
         </a>
 
@@ -134,6 +138,17 @@
       const elWalter = document.querySelector('.walter-modal')
       elWalter.classList.remove('modal-show')
     }
+
+    function onHumanHover() {
+      const elHuman = document.querySelector('.human-modal')
+      elHuman.classList.add('modal-show')
+    }
+
+    function onHumanOut() {
+      const elHuman = document.querySelector('.human-modal')
+      elHuman.classList.remove('modal-show')
+    }
+
   </script>
 
 </body>
